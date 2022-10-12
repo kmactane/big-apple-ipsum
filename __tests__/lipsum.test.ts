@@ -67,162 +67,6 @@ describe('Lipsum', () => {
 			expect(justNouns).toContain(Lipsum.getWordOfType('noun', [], {english}).word)
 		})
 	})
-	describe('generateNounPhrase', () => {
-		const blackOpts: Lipsum.npOpts = {
-			english: [
-				{
-					word: "artIndef",
-					pos: "article",
-				},
-				{
-					word: "black",
-					pos: "adjective",
-					tags: [ "color" ],
-				},
-				{
-					word: "dog",
-					pos: "noun",
-					tags: [ "animal" ],
-				},
-			],
-		}
-		it('generates noun phrases', () => {
-			const blackPhrases = ['a dog', 'a black dog', 'dogs', 'black dogs']
-			let thePhrase = Lipsum.generateNounPhrase(blackOpts)
-			// console.log(`got black phrase: ${thePhrase}`);
-			expect(blackPhrases).toContain(thePhrase)
-			const ebonyOpts = clone(blackOpts)
-			ebonyOpts.english = ebonyOpts.english.map((opt: { word: string }) => {
-				if (opt.word === "black") {
-					opt.word = "ebony"
-				}
-				return opt
-			})
-			const ebonyPhrases = ['a dog', 'an ebony dog', 'dogs', 'ebony dogs']
-			thePhrase = Lipsum.generateNounPhrase(ebonyOpts)
-			// console.log(`got ebony phrase: ${thePhrase}`);
-			expect(ebonyPhrases).toContain(thePhrase)
-		})
-		it('can force singular and plural', () => {
-			const singularPhrases = ['a dog', 'a black dog']
-			const pluralPhrases = ['dogs', 'black dogs']
-			blackOpts.force = "singular"
-			let thePhrase = Lipsum.generateNounPhrase(blackOpts)
-			expect(singularPhrases).toContain(thePhrase)
-			expect(pluralPhrases).not.toContain(thePhrase)
-			blackOpts.force = "plural"
-			thePhrase = Lipsum.generateNounPhrase(blackOpts)
-			expect(singularPhrases).not.toContain(thePhrase)
-			expect(pluralPhrases).toContain(thePhrase)
-		})
-		it('can make phrases based on proper nouns', () => {
-			const properOpts: Lipsum.npOpts = {
-				english: [
-					{
-						word: "the",
-						pos: "article",
-					},
-					{
-						word: "sprawling",
-						pos: "adjective"
-					},
-					{
-						word: "Internet",
-						pos: "proper"
-					}
-				],
-				force: "definite"
-			}
-			const properPhrases = ["the Internet", "the sprawling Internet"]
-			let thePhrase = Lipsum.generateNounPhrase(properOpts)
-			expect(properPhrases).toContain(thePhrase)
-		})
-		it('can force (im)proper nouns', () => {
-			const opts: Lipsum.npOpts = {
-				english: [
-					{
-						word: "the",
-						pos: "article",
-					},
-					{
-						word: "blue",
-						pos: "adjective"
-					},
-					{
-						word: "house",
-						pos: "noun",
-					},
-					{
-						word: "Pacific Ocean",
-						pos: "proper"
-					}
-				],
-				force: "definite"
-			}
-			const properPhrases = ["the blue Pacific Ocean", "the Pacific Ocean"]
-			const improperPhrases = ["the blue house", "the house"]
-			const allPhrases = properPhrases.concat(improperPhrases)
-			let thePhrase = Lipsum.generateNounPhrase(opts)
-			expect(allPhrases).toContain(thePhrase)
-			thePhrase = Lipsum.generateNounPhrase(opts)
-			expect(allPhrases).toContain(thePhrase)
-			thePhrase = Lipsum.generateNounPhrase(opts)
-			expect(allPhrases).toContain(thePhrase)
-			opts.noun = "proper"
-			thePhrase = Lipsum.generateNounPhrase(opts)
-			expect(properPhrases).toContain(thePhrase)
-			expect(improperPhrases).not.toContain(thePhrase)
-			opts.noun = "improper"
-			thePhrase = Lipsum.generateNounPhrase(opts)
-			expect(properPhrases).not.toContain(thePhrase)
-			expect(improperPhrases).toContain(thePhrase)
-
-		})
-	})
-	describe('generatePrepositionalPhrase', () => {
-		const opts: Lipsum.ppOpts = {
-			english: [
-				{
-					word: "the",
-					pos: "article",
-				},
-				{
-					word: "babbling",
-					pos: "adjective",
-				},
-				{
-					word: "brook",
-					pos: "noun",
-					tags: [ "animal" ],
-				},
-				{
-					word: "over",
-					pos: "preposition",
-				}
-			]
-		}
-		it('returns a resonable phrase', () => {
-			const phrases = ['over the babbling brook', 'over babbling brooks', 'over the brook', 'over brooks']
-			let thePhrase = Lipsum.generatePrepositionalPhrase(opts)
-			// console.log(`got prepositional phrase: ${thePhrase}`);
-			expect(phrases).toContain(thePhrase)
-		})
-		it('can force the preposition', () => {
-			opts.force = "beside"
-			const phrases = ['beside the babbling brook', 'beside babbling brooks', 'beside the brook', 'beside brooks']
-			let thePhrase = Lipsum.generatePrepositionalPhrase(opts)
-			expect(phrases).toContain(thePhrase)
-		})
-		it('can force from a set of prepositions', () => {
-			opts.force = ["from","to"]
-			const phrases = ['from the babbling brook', 'to the babbling brook', 'from the brook', 'to the brook']
-			opts.nForce = "definite"
-			let thePhrase = Lipsum.generatePrepositionalPhrase(opts)
-			expect(phrases).toContain(thePhrase)
-			thePhrase = Lipsum.generatePrepositionalPhrase(opts)
-			expect(phrases).toContain(thePhrase)
-		})
-	})
 
 	describe('conjugateVerb', () => {
 		const verbs: {[key:string]: any}[] = [
@@ -274,13 +118,6 @@ describe('Lipsum', () => {
 	})
 
 
-	describe('generateSentence', () => {
-		it('generates sentences according to templates', () => {
-			let sentence = Lipsum.generateSentence()
-			expect(sentence).toMatch(/\.$/)
-		})
-	})
-
 	describe('generateRandomSentence', () => {
 		it('generates sentences', () => {
 			let sentence = Lipsum.generateRandomSentence()
@@ -290,22 +127,10 @@ describe('Lipsum', () => {
 			while (Lang.newyork.filter(x => x.pos === "sentence").map(s => s.word).includes(sentence)) {
 				sentence = Lipsum.generateRandomSentence()
 			}
-			
+
 			let len = sentence.split(' ').length
 			expect(len).toBeGreaterThanOrEqual(Lipsum.MIN_WORDS_IN_SENTENCE)
 			expect(len).toBeLessThanOrEqual(Lipsum.MAX_WORDS_IN_SENTENCE)
 		})
 	})
-
-
-	// describe('shouldAddWord', () => {
-	// 	it('returns true for short sentences', () => {
-	// 		expect(Lipsum.shouldAddWord('one two three')).toBe(true)
-	// 		expect(Lipsum.shouldAddWord('one two three four five')).toBe(true)
-	// 		expect(Lipsum.shouldAddWord('one two three four five six seven eight nine')).toBe(true)
-	// 	})
-	// 	it('returns false for long sentences', () => {
-	// 		expect(Lipsum.shouldAddWord('one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twenty-one twenty-two twenty-three twenty-four twenty-five twenty-six twenty-seven twenty-eight twenty-nine thirty thirty-one thirty-two thirty-three thirty-four')).toBe(true)
-	// 	})
-	// })
 })

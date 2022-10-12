@@ -7,15 +7,6 @@ export interface Word {
 	type?: string
 }
 
-export const structures = [
-	// "article adjective adjective noun verb preposition article adjective noun",
-	"nounPhrase verb prepositionalPhrase",
-	"nounPhrase verb nounPhrase",
-	// "article [animate] verb object"
-]
-
-
-
 export const english: Word[] = [
 	{
 		// THIS IS DELIBERATE! The token "artIndef" will get changed

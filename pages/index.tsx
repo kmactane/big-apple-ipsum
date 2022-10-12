@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-import {generateSentence, generateRandomSentence, generateNounPhrase, generatePrepositionalPhrase, generateLipsum} from '../lib/lipsum'
+import {generateLipsum} from '../lib/lipsum'
 
 const Home: NextPage = () => {
   const [lipsum, setLipsum] = useState("Your Lorem Ipsum text will show up here.")

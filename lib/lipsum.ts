@@ -1,5 +1,4 @@
 
-import { stringify } from "querystring"
 import * as Lang from "./language"
 import * as Utils from './utils'
 
@@ -50,10 +49,6 @@ export const getWordOfType = (type: string, used: Lang.Word[], opts?: {english?:
 	return Utils.oneFromExcept(words, used)
 }
 
-const makeWord = (word: string, pos: string = "ad-hoc"): Lang.Word => {
-	return {word, pos}
-}
-
 export const conjugateVerb = (verb: Lang.Word, tense: Tense, person: Person = "1sg") => {
 	const head = verb.word.replace(/^to /, '')
 	switch(tense) {
@@ -76,108 +71,11 @@ export const conjugateVerb = (verb: Lang.Word, tense: Tense, person: Person = "1
 	}
 }
 
-export const generateNounPhrase = (opts?: npOpts): string => {
-	const english: Lang.Word[] = opts?.english || Lang.english
-	const newyork: Lang.Word[] = opts?.newyork || Lang.newyork
-	const nounType = opts?.noun ? opts.noun : "noun"
-	let isPlural: boolean
-	if (opts?.force) {
-		if (opts.force === "plural") {
-			isPlural = true
-		} else {
-			isPlural = false
-		}
-	} else {
-		isPlural = Utils.randomChance(33)
-	}
-	let theArticle: Lang.Word | null = null
-	let theAdjectives: Lang.Word[] = []
-	let theNoun: Lang.Word = getWordOfType(nounType, [], {english, newyork})
-	if (isPlural) {
-		theNoun.word = Utils.pluralize(theNoun.word)
-	} else {
-		if (opts?.force === "definite") {
-			theArticle = makeWord("the", "article")
-		} else if (opts?.force === "indefinite") {
-			theArticle = makeWord("article", "article")
-		} else {
-			theArticle = getWordOfType('article', [], {english, newyork})
-		}
-	}
-	while (Utils.randomUpTo(3, theAdjectives)) {
-		let newAdj = getWordOfType('adjective', theAdjectives, {english, newyork})
-		theAdjectives.push(newAdj)
-	}
-	theAdjectives = theAdjectives.filter(x => x && x.word && x.word.length)
-
-	let theString: string = [theArticle?.word, (theAdjectives.map(a => a?.word).join(', ')), theNoun.word].join(' ')
-	theString = theString.replace(/ +/g, ' ').trim()
-	return resolveArticles(theString)
-}
-
-export const generatePrepositionalPhrase = (opts?: ppOpts): string => {
-	const english: Lang.Word[] = opts?.english || Lang.english
-	const newyork: Lang.Word[] = opts?.newyork || Lang.newyork
-	const used: Lang.Word[] = opts?.used || []
-	const nForce = opts?.nForce || undefined
-	const thePreposition = opts?.force ?
-		typeof opts.force === "string" ?
-			makeWord(opts.force as string) :
-			makeWord(Utils.oneFrom(opts.force)) :
-		getWordOfType('preposition', used, {english, newyork})
-	const nounPhrase = generateNounPhrase({english, newyork, force: nForce})
-	return `${thePreposition.word} ${nounPhrase}`
-}
-
 export const resolveArticles = (str: string) => {
 	return str.replace(/(a)rtIndef (\S+)/gi, (match, ltr1: string, word2: string) => {
 		const n: string = word2.match(/^[aeiou]/) ? 'n' : ''
 		return `${ltr1}${n} ${word2}`
 	})
-}
-
-export const generateSentence = (opts?: {structures?: string[], english?: Lang.Word[], newyork?: Lang.Word[]}) => {
-	let aSentence: string[] = []
-	const structure = opts?.structures ? Utils.oneFrom(opts.structures) : Utils.oneFrom(Lang.structures)
-	const english = opts?.english || Lang.english
-	const newyork = opts?.newyork || Lang.newyork
-
-	let verbTook: string[] | null = null
-	let nounPerson = ''
-	let lastPos: string = ''
-	structure.split(' ').forEach((item: string) => {
-		let word: Lang.Word | string
-		if (item === "nounPhrase") {
-			word = generateNounPhrase({english, newyork})
-			if (word.endsWith('s')) {
-				nounPerson = '3pl'
-			} else {
-				nounPerson = '3sg'
-			}
-		 } else if (item === "prepositionalPhrase") {
-			if (verbTook) {
-				word = generatePrepositionalPhrase({force: verbTook, english, newyork})
-				verbTook = null
-			} else {
-				word = generatePrepositionalPhrase({english, newyork})
-			}
-		 } else {
-			word = getWordOfType(item, [])
-			if (word.pos === "verb") {
-				if (word.takes) {
-					verbTook = word.takes
-				}
-				word = conjugateVerb(word, "present", nounPerson as Person)
-			} else {
-				word = word.word
-			}
-		}
-		aSentence.push(word)
-	})
-	let sSentence: string = aSentence.join(' ')
-	sSentence = Utils.ucFirst(sSentence).trim() + '.'
-	sSentence = resolveArticles(sSentence)
-	return sSentence
 }
 
 const addPunctuation = (str: string) => {
