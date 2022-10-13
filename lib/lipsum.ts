@@ -99,7 +99,7 @@ const processWord = (word: Lang.Word): string => {
 	word = Utils.clone(word)
 	switch(word.pos) {
 		case 'noun':
-			if (Utils.randomChance(75)) {
+			if (Utils.randomChance(25)) {
 				word.word = Utils.pluralize(word.word)
 			}
 			break
@@ -154,7 +154,7 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 		}
 		aSentence = aSentence.concat(processWord(newStuff).split(' '))
 
-		if (Utils.randomChance(20)) {
+		if (Utils.randomChance(10)) {
 			aSentence.push(addPunctuation(aSentence.pop() as string))
 		}
 
