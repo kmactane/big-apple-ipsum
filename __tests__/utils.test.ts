@@ -102,6 +102,7 @@ describe('Utils', () => {
 			expect(Utils.pluralize('eye')).toEqual('eyes')
 			expect(Utils.pluralize('fox')).toEqual('foxes')
 			expect(Utils.pluralize('couch')).toEqual('couches')
+			expect(Utils.pluralize('scarf')).toEqual('scarves')
 			expect(Utils.pluralize('pants')).toEqual('pants')
 			expect(Utils.pluralize('jeans')).toEqual('jeans')
 			expect(Utils.pluralize('dress')).toEqual('dresses')

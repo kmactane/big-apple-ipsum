@@ -28,8 +28,8 @@ export const pluralize = (str: string): string => {
 	if (! str.match(/[a-z]/i)) {
 		return str
 	}
-	if (str.match(/lf$/)) {
-		return str.replace(/lf$/, 'lves')
+	if (str.match(/([rl])f$/)) {
+		return str.replace(/([rl])f$/, '$1ves')
 	}
 	if (str.match(/(ch|x|ss)$/)) {
 		return str + 'es'

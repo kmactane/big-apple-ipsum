@@ -33,6 +33,14 @@ describe('Lipsum', () => {
 				tags: [ "furniture" ],
 			},
 			{
+				word: "Atlantic Ocean",
+				pos: "proper",
+			},
+			{
+				word: "Chrysler Building",
+				pos: "proper",
+			},
+			{
 				word: "quick",
 				pos: "adjective",
 			},
@@ -63,8 +71,22 @@ describe('Lipsum', () => {
 		]
 		const justNouns = ["dog", "table"]
 		const justAdjectives = ["quick", "blue"]
+		const justVerbs = ["to jump", "to speak"]
+		const justPropers = ["Atlantic Ocean", "Chrysler Building"]
 		it('gets nouns', () => {
-			expect(justNouns).toContain(Lipsum.getWordOfType('noun', [], {english}).word)
+			expect(justNouns.concat(justPropers)).toContain(Lipsum.getWordOfType('noun', [], {english}).word)
+		})
+		it('gets verbs', () => {
+			expect(justVerbs).toContain(Lipsum.getWordOfType('verb', [], {english}).word)
+		})
+		it('gets adjectives', () => {
+			expect(justAdjectives).toContain(Lipsum.getWordOfType('adjective', [], {english}).word)
+		})
+		it('gets proper nouns', () => {
+			expect(justPropers).toContain(Lipsum.getWordOfType('proper', [], {english}).word)
+		})
+		it('gets improper nouns', () => {
+			expect(justNouns).toContain(Lipsum.getWordOfType('improper', [], {english}).word)
 		})
 	})
 
@@ -74,6 +96,8 @@ describe('Lipsum', () => {
 			{ type: "regular", infinitive: { word: "to jump", pos: "verb"}, past: "jumped", present: "jump", present3sg: "jumps", continuative: "jumping", future: "will jump"},
 			{ type: "regular", infinitive: { word: "to dance", pos: "verb"}, past: "danced", present: "dance", present3sg: "dances", continuative: "dancing", future: "will dance"},
 			{ type: "regular", infinitive: { word: "to debate", pos: "verb"}, past: "debated", present: "debate", present3sg: "debates", continuative: "debating", future: "will debate"},
+			{ type: "regular", infinitive: { word: "to judge", pos: "verb"}, past: "judged", present: "judge", present3sg: "judges", continuative: "judging", future: "will judge"},
+			{ type: "regular", infinitive: { word: "to starve", pos: "verb"}, past: "starved", present: "starve", present3sg: "starves", continuative: "starving", future: "will starve"},
 			{ type: "regular", infinitive: { word: "to say", pos: "verb"}, past: "said", present: "say", present3sg: "says", continuative: "saying", future: "will say"},
 			{ type: "regular", infinitive: { word: "to pay", pos: "verb"}, past: "paid", present: "pay", present3sg: "pays", continuative: "paying", future: "will pay"},
 			{ type: "regular", infinitive: { word: "to time", pos: "verb"}, past: "timed", present: "time", present3sg: "times", continuative: "timing", future: "will time"},
@@ -84,6 +108,7 @@ describe('Lipsum', () => {
 			{ type: "regular", infinitive: { word: "to mop", pos: "verb"}, past: "mopped", present: "mop", present3sg: "mops", continuative: "mopping", future: "will mop"},
 			{ type: "regular", infinitive: { word: "to mope", pos: "verb"}, past: "moped", present: "mope", present3sg: "mopes", continuative: "moping", future: "will mope"},
 			{ type: "regular", infinitive: { word: "to try", pos: "verb"}, past: "tried", present: "try", present3sg: "tries", continuative: "trying", future: "will try"},
+			{ type: "irregular", infinitive: { word: "to play", pos: "verb", type: "irrregular:past:played"}, past: "played", present: "play", present3sg: "plays", continuative: "playing", future: "will play"},
 			{ type: "regular", infinitive: { word: "to carry", pos: "verb"}, past: "carried", present: "carry", present3sg: "carries", continuative: "carrying", future: "will carry"},
 			{ type: "umlaut", infinitive: { word: "to speak", pos: "verb", type: "umlaut:spoke"}, past: "spoke", present: "speak", present3sg: "speaks", continuative: "speaking", future: "will speak"},
 			{ type: "umlaut", infinitive: { word: "to stink", pos: "verb", type: "umlaut:stank"}, past: "stank", present: "stink", present3sg: "stinks", continuative: "stinking", future: "will stink"},
