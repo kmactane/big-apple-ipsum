@@ -20,6 +20,14 @@ export const english: Word[] = [
 		pos: "article",
 	},
 	{
+		word: "artIndef",
+		pos: "article",
+	},
+	{
+		word: "the",
+		pos: "article",
+	},
+	{
 		word: "the",
 		pos: "article",
 	},
@@ -30,8 +38,24 @@ export const english: Word[] = [
 
 
 
+	//
+	// ADJECTIVES
+	//
+
+	{
+		word: "ample",
+		pos: "adjective",
+	},
 	{
 		word: "bashful",
+		pos: "adjective",
+	},
+	{
+		word: "big",
+		pos: "adjective",
+	},
+	{
+		word: "bigger",
 		pos: "adjective",
 	},
 	{
@@ -80,6 +104,10 @@ export const english: Word[] = [
 		pos: "adjective",
 	},
 	{
+		word: "little",
+		pos: "adjective",
+	},
+	{
 		word: "lovable",
 		pos: "adjective",
 	},
@@ -106,11 +134,23 @@ export const english: Word[] = [
 		pos: "adjective",
 	},
 	{
+		word: "small",
+		pos: "adjective",
+	},
+	{
 		word: "spooky",
 		pos: "adjective",
 	},
 	{
+		word: "starry",
+		pos: "adjective",
+	},
+	{
 		word: "striped",
+		pos: "adjective",
+	},
+	{
+		word: "sweet",
 		pos: "adjective",
 	},
 	{
@@ -121,6 +161,10 @@ export const english: Word[] = [
 		word: "white",
 		pos: "adjective",
 		tags: [ "color" ],
+	},
+	{
+		word: "wild",
+		pos: "adjective",
 	},
 	{
 		word: "wondrous",
@@ -136,26 +180,11 @@ export const english: Word[] = [
 
 
 
-	{
-		word: "alpha",
-		pos: "adjective",
-	},
-	{
-		word: "alpha",
-		pos: "adjective",
-	},
-	{
-		word: "alpha",
-		pos: "adjective",
-	},
-	{
-		word: "alpha",
-		pos: "adjective",
-	},
 
 
-
-
+	//
+	// nouns
+	//
 
 
 
@@ -168,9 +197,17 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "bacon",
+		pos: "noun",
+	},
+	{
 		word: "bed",
 		pos: "noun",
 		tags: [ "furniture" ],
+	},
+	{
+		word: "blizzard",
+		pos: "noun",
 	},
 	{
 		word: "bookshelf",
@@ -178,7 +215,27 @@ export const english: Word[] = [
 		tags: [ "furniture" ],
 	},
 	{
+		word: "bottle",
+		pos: "noun",
+	},
+	{
+		word: "button",
+		pos: "noun",
+	},
+	{
+		word: "can",
+		pos: "noun",
+	},
+	{
+		word: "cape",
+		pos: "noun",
+	},
+	{
 		word: "car",
+		pos: "noun",
+	},
+	{
+		word: "cave",
 		pos: "noun",
 	},
 	{
@@ -193,6 +250,10 @@ export const english: Word[] = [
 	},
 	{
 		word: "coyote",
+		pos: "noun",
+	},
+	{
+		word: "dinner",
 		pos: "noun",
 	},
 	{
@@ -254,6 +315,10 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "pill",
+		pos: "noun",
+	},
+	{
 		word: "scarf",
 		pos: "noun",
 	},
@@ -266,9 +331,21 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "soup",
+		pos: "noun",
+	},
+	{
+		word: "star",
+		pos: "noun",
+	},
+	{
 		word: "table",
 		pos: "noun",
 		tags: [ "furniture" ],
+	},
+	{
+		word: "thing",
+		pos: "noun",
 	},
 	{
 		word: "traffic",
@@ -286,50 +363,40 @@ export const english: Word[] = [
 		word: "twin",
 		pos: "noun",
 	},
+
+
+
+
+
+	//
+	// prepositions
+	//
+
+
+
+
 	{
-		word: "alpha",
-		pos: "noun",
+		word: "after",
+		pos: "preposition",
 	},
 	{
-		word: "alpha",
-		pos: "noun",
+		word: "before",
+		pos: "preposition",
 	},
 	{
-		word: "alpha",
-		pos: "noun",
+		word: "for",
+		pos: "preposition",
 	},
-	{
-		word: "alpha",
-		pos: "noun",
-	},
-	{
-		word: "alpha",
-		pos: "noun",
-	},
-	{
-		word: "alpha",
-		pos: "noun",
-	},
-	{
-		word: "alpha",
-		pos: "noun",
-	},
-
-
-
-
-
-
-
-
-
-
 	{
 		word: "in",
 		pos: "preposition",
 	},
 	{
 		word: "into",
+		pos: "preposition",
+	},
+	{
+		word: "of",
 		pos: "preposition",
 	},
 	{
@@ -358,6 +425,11 @@ export const english: Word[] = [
 
 
 
+	//
+	// verbs
+	//
+
+
 
 
 
@@ -370,8 +442,17 @@ export const english: Word[] = [
 		pos: "verb",
 	},
 	{
+		word: "to cook",
+		pos: "verb",
+	},
+	{
 		word: "to dance",
 		pos: "verb",
+	},
+	{
+		word: "to eat",
+		pos: "verb",
+		type: "umlaut:ate",
 	},
 	{
 		word: "to fly",
@@ -387,6 +468,10 @@ export const english: Word[] = [
 		pos: "verb",
 	},
 	{
+		word: "to judge",
+		pos: "verb",
+	},
+	{
 		word: "to jump",
 		pos: "verb",
 	},
@@ -395,12 +480,27 @@ export const english: Word[] = [
 		pos: "verb",
 	},
 	{
+		word: "to read",
+		pos: "verb",
+		type: "umlaut:read",
+	},
+	{
 		word: "to sail",
 		pos: "verb",
 	},
 	{
+		word: "to seek",
+		pos: "verb",
+		type: "umlaut:sought",
+	},
+	{
 		word: "to shine",
 		pos: "verb",
+	},
+	{
+		word: "to sing",
+		pos: "verb",
+		type: "umlaut:sang",
 	},
 	{
 		word: "to speak",
@@ -413,7 +513,15 @@ export const english: Word[] = [
 		type: "umlaut:sped",
 	},
 	{
+		word: "to starve",
+		pos: "verb",
+	},
+	{
 		word: "to stroll",
+		pos: "verb",
+	},
+	{
+		word: "to swerve",
 		pos: "verb",
 	},
 	{
@@ -438,9 +546,21 @@ export const english: Word[] = [
 		pos: "verb",
 	},
 	{
+		word: "to wander",
+		pos: "verb",
+	},
+	{
+		word: "to want",
+		pos: "verb",
+	},
+	{
 		word: "to weave",
 		pos: "verb",
 		type: "umlaut:wove",
+	},
+	{
+		word: "to wonder",
+		pos: "verb",
 	},
 ]
 
@@ -450,10 +570,6 @@ export const english: Word[] = [
 
 export const newyork: Word[] = [
 	{
-		word: "brownstone",
-		pos: "noun",
-	},
-	{
 		word: "always warm in the subway",
 		pos: "phrase",
 	},
@@ -462,7 +578,63 @@ export const newyork: Word[] = [
 		pos: "noun phrase",
 	},
 	{
+		word: "Bed-Stuy",
+		pos: "proper",
+	},
+	{
+		word: "Brooklyn Botanical Gardens",
+		pos: "proper",
+	},
+	{
+		word: "the Cyclone",
+		pos: "proper",
+	},
+	{
 		word: "big lights will inspire you",
+		pos: "phrase",
+	},
+	{
+		word: "Bronx cheer",
+		pos: "noun",
+	},
+	{
+		word: "the Bronx Zoo",
+		pos: "proper",
+	},
+	{
+		word: "Brooklyn Bridge",
+		pos: "proper",
+	},
+	{
+		word: "brownstone",
+		pos: "noun",
+	},
+	{
+		word: "brownstones as far as the eye can see",
+		pos: "phrase",
+	},
+	{
+		word: "brownstones the whole way down the block",
+		pos: "phrase",
+	},
+	{
+		word: "Central Park",
+		pos: "proper",
+	},
+	{
+		word: "the Chelsea Hotel",
+		pos: "proper",
+	},
+	{
+		word: "Chrysler Building",
+		pos: "proper",
+	},
+	{
+		word: "Citi Field",
+		pos: "proper",
+	},
+	{
+		word: "concrete bunghole wet dream tomato",
 		pos: "phrase",
 	},
 	{
@@ -470,8 +642,12 @@ export const newyork: Word[] = [
 		pos: "noun phrase",
 	},
 	{
-		word: "concrete bunghole wet dream tomato",
-		pos: "phrase",
+		word: "Co-Op City",
+		pos: "proper",
+	},
+	{
+		word: "Corlears Hook",
+		pos: "proper",
 	},
 	{
 		word: "dollar slice",
@@ -490,12 +666,52 @@ export const newyork: Word[] = [
 		pos: "phrase",
 	},
 	{
+		word: "Empire State Building",
+		pos: "proper",
+	},
+	{
+		word: "Fordham",
+		pos: "proper",
+	},
+	{
+		word: "Fuhgeddaboutit!",
+		pos: "sentence",
+	},
+	{
+		word: "Gem Spa",
+		pos: "proper",
+	},
+	{
+		word: "George Washington Bridge",
+		pos: "proper",
+	},
+	{
+		word: "Grand Army Plaza",
+		pos: "proper",
+	},
+	{
+		word: "hanging out on the stoop",
+		pos: "phrase",
+	},
+	{
 		word: "Harlem River",
+		pos: "proper",
+	},
+	{
+		word: "Herald Square",
+		pos: "proper",
+	},
+	{
+		word: "Holland Tunnel",
 		pos: "proper",
 	},
 	{
 		word: "How 'bout those Mets?",
 		pos: "sentence",
+	},
+	{
+		word: "Hudson Yards",
+		pos: "proper",
 	},
 	{
 		word: "I'm walkin' here!",
@@ -506,12 +722,60 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "Knicks game",
+		pos: "noun phrase",
+	},
+	{
+		word: "LaGuardia",
+		pos: "proper",
+	},
+	{
+		word: "Long Island City",
+		pos: "proper",
+	},
+	{
 		word: "Mets",
+		pos: "proper",
+	},
+	{
+		word: "Pepsi-Cola sign",
 		pos: "proper",
 	},
 	{
 		word: "pizza rat",
 		pos: "phrase",
+	},
+	{
+		word: "playing stickball on the stoop",
+		pos: "phrase",
+	},
+	{
+		word: "Prospect Park",
+		pos: "proper",
+	},
+	{
+		word: "Silvercup Studios",
+		pos: "proper",
+	},
+	{
+		word: "so nice, they named it twice",
+		pos: "phrase",
+	},
+	{
+		word: "Soldiers and Sailors Arch",
+		pos: "proper",
+	},
+	{
+		word: "Todt Hill",
+		pos: "proper",
+	},
+	{
+		word: "the Unisphere",
+		pos: "proper",
+	},
+	{
+		word: "Yankee Stadium",
+		pos: "proper",
 	},
 	{
 		word: "Yankees",
