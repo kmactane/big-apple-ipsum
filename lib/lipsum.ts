@@ -4,7 +4,7 @@ import * as Utils from './utils'
 
 export const MIN_WORDS_IN_SENTENCE = 10
 export const MAX_WORDS_IN_SENTENCE = 23
-export const DEFAULT_NYC_PERCENT = 20
+export const DEFAULT_NYC_PERCENT = 25
 
 export const MIN_SENTENCES_PER_PARA = 2
 export const MAX_SENTENCES_PER_PARA = 5
@@ -63,7 +63,7 @@ export const conjugateVerb = (verb: Lang.Word, tense: Tense, person: Person = "1
 			}
 			return head
 		case "continuative":
-			return `${head}ing`.replace(/([aeiou])([pbdmn])ing$/, "$1$2$2ing").replace(/eing$/, 'ing')
+			return `${head}ing`.replace(/([^aeiou][aeiou])([pbdmn])ing$/, "$1$2$2ing").replace(/eing$/, 'ing')
 		case "future":
 			return `will ${head}`
 		default:
@@ -72,9 +72,9 @@ export const conjugateVerb = (verb: Lang.Word, tense: Tense, person: Person = "1
 }
 
 export const resolveArticles = (str: string) => {
-	return str.replace(/(a)rtIndef (\S+)/gi, (match, ltr1: string, word2: string) => {
+	return str.replace(/(a)rtIndef( —|\.\.\.|[,;:])? (\S+)/gi, (match, ltr1: string, punct1: string = '', word2: string) => {
 		const n: string = word2.match(/^[aeiou]/) ? 'n' : ''
-		return `${ltr1}${n} ${word2}`
+		return `${ltr1}${n}${punct1} ${word2}`
 	})
 }
 
@@ -121,7 +121,8 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 	let newyork = opts?.newyork || Lang.newyork
 	const maxLen = opts?.maxLen || MAX_WORDS_IN_SENTENCE
 	const minLen = opts?.minLen || MIN_WORDS_IN_SENTENCE
-	const nycPercent = opts?.nycPercent || DEFAULT_NYC_PERCENT
+	const nycPercent1 = opts?.nycPercent || DEFAULT_NYC_PERCENT
+	const nycPercent2 = nycPercent1 + 10
 
 	let engWords: string[] = []
 	let nycWords: string[] = []
@@ -137,20 +138,20 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 	while (aSentence.length < maxLen) {
 		let newStuff
 		let wordsLeft = maxLen - aSentence.length
-		let useNyc = (engWords.length + nycWords.length) ?
-			((nycWords.length / (engWords.length + nycWords.length) * 100) < nycPercent) :
-			Utils.randomChance(nycPercent)
+		let useNyc = (nycWords.length) ?
+			((nycWords.length / (engWords.length + nycWords.length) * 100) < nycPercent2) :
+			Utils.randomChance(nycPercent1 + (5 * (engWords.length - 1)))
 		if (useNyc) {
 			newStuff = Utils.oneFromExcept(
 				newyork.filter(w => w.word.split(' ').length <= wordsLeft),
 				nycUsed
 			)
 			nycUsed.push(newStuff)
-			nycWords.concat(newStuff.word.split(' '))
+			nycWords = nycWords.concat(newStuff.word.split(' '))
 		} else {
 			newStuff = Utils.oneFromExcept(english, engUsed)
 			engUsed.push(newStuff)
-			engWords.concat(newStuff.word.split(' '))
+			engWords = engWords.concat(newStuff.word.split(' '))
 		}
 		aSentence = aSentence.concat(processWord(newStuff).split(' '))
 

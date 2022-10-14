@@ -110,6 +110,7 @@ describe('Lipsum', () => {
 			{ type: "regular", infinitive: { word: "to try", pos: "verb"}, past: "tried", present: "try", present3sg: "tries", continuative: "trying", future: "will try"},
 			{ type: "irregular", infinitive: { word: "to play", pos: "verb", type: "irrregular:past:played"}, past: "played", present: "play", present3sg: "plays", continuative: "playing", future: "will play"},
 			{ type: "regular", infinitive: { word: "to carry", pos: "verb"}, past: "carried", present: "carry", present3sg: "carries", continuative: "carrying", future: "will carry"},
+			{ type: "umlaut", infinitive: { word: "to speed", pos: "verb", type: "umlaut:sped"}, past: "sped", present: "speed", present3sg: "speeds", continuative: "speeding", future: "will speed"},
 			{ type: "umlaut", infinitive: { word: "to speak", pos: "verb", type: "umlaut:spoke"}, past: "spoke", present: "speak", present3sg: "speaks", continuative: "speaking", future: "will speak"},
 			{ type: "umlaut", infinitive: { word: "to stink", pos: "verb", type: "umlaut:stank"}, past: "stank", present: "stink", present3sg: "stinks", continuative: "stinking", future: "will stink"},
 			{ type: "irregular", infinitive: { word: "to have", pos: "verb"}, past: "had", present: "have", present3sg: "has", continuative: "having", future: "will have"},
