@@ -66,8 +66,6 @@ export const conjugateVerb = (verb: Lang.Word, tense: Tense, person: Person = "1
 			return `${head}ing`.replace(/([^aeiou][aeiou])([pbdmn])ing$/, "$1$2$2ing").replace(/eing$/, 'ing')
 		case "future":
 			return `will ${head}`
-		default:
-			return head
 	}
 }
 
