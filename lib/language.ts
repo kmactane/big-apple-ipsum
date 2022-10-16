@@ -121,6 +121,10 @@ export const english: Word[] = [
 		tags: [ "color" ],
 	},
 	{
+		word: "pretty",
+		pos: "adjective",
+	},
+	{
 		word: "quick",
 		pos: "adjective",
 	},
@@ -247,6 +251,10 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "cat",
+		pos: "noun",
+	},
+	{
 		word: "cave",
 		pos: "noun",
 	},
@@ -298,6 +306,10 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "flower",
+		pos: "noun",
+	},
+	{
 		word: "fox",
 		pos: "noun",
 		tags: [ "animal" ],
@@ -315,6 +327,10 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "house",
+		pos: "noun",
+	},
+	{
 		word: "imagination",
 		pos: "noun",
 	},
@@ -326,6 +342,10 @@ export const english: Word[] = [
 		word: "love",
 		pos: "noun",
 	},
+	// {
+	// 	word: "mouse",
+	// 	pos: "noun",
+	// },
 	{
 		word: "pants",
 		pos: "noun",
@@ -348,6 +368,10 @@ export const english: Word[] = [
 	},
 	{
 		word: "skirt",
+		pos: "noun",
+	},
+	{
+		word: "sky",
 		pos: "noun",
 	},
 	{
@@ -458,6 +482,10 @@ export const english: Word[] = [
 
 
 	{
+		word: "to bake",
+		pos: "verb",
+	},
+	{
 		word: "to carry",
 		pos: "verb",
 	},
@@ -497,6 +525,10 @@ export const english: Word[] = [
 	},
 	{
 		word: "to jump",
+		pos: "verb",
+	},
+	{
+		word: "to make",
 		pos: "verb",
 	},
 	{
@@ -561,6 +593,10 @@ export const english: Word[] = [
 		word: "to swim",
 		pos: "verb",
 		type: "umlaut:swam",
+	},
+	{
+		word: "to take",
+		pos: "verb",
 	},
 	{
 		word: "to talk",
@@ -739,7 +775,7 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
-		word: "How &rsquo;bout those Mets?",
+		word: "How ’bout those Mets?",
 		pos: "sentence",
 	},
 	{
@@ -751,7 +787,7 @@ export const newyork: Word[] = [
 		pos: "sentence",
 	},
 	{
-		word: "If you can&rsquo;t fold the slice, it ain&rsquo;t pizza.",
+		word: "If you can’t fold the slice, it ain’t pizza.",
 		pos: "sentence",
 	},
 	{
@@ -811,7 +847,7 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
-		word: "take the &ldquo;A&rdquo; train",
+		word: "take the “A” train",
 		pos: "phrase",
 	},
 	{
