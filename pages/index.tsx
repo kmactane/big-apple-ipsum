@@ -4,10 +4,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-import {generateLipsum} from '../lib/lipsum'
+import {generateLipsumDiv} from '../lib/lipsum'
 
 const Home: NextPage = () => {
   const [lipsum, setLipsum] = useState("Your Lorem Ipsum text will show up here.")
+  const [lipsumDiv, setLipsumDiv] = useState(<div id="lipsum">Lorem ipsum dolor sit amet.</div>)
   
   const [howMany, setHowMany] = useState(3)
   const [whatUnits, setWhatUnits] = useState("sentences")
@@ -21,15 +22,15 @@ const Home: NextPage = () => {
   }
   
   const regenerate = () => {
-    setLipsum(generateLipsum(howMany, whatUnits))
+    setLipsumDiv(generateLipsumDiv(howMany, whatUnits))
   }
   
   useEffect(() => {
-    setLipsum(generateLipsum(howMany, whatUnits))
+    setLipsumDiv(generateLipsumDiv(howMany, whatUnits))
   }, [])
   
   useEffect(() => {
-    setLipsum(generateLipsum(howMany, whatUnits))
+    setLipsumDiv(generateLipsumDiv(howMany, whatUnits))
   }, [howMany, whatUnits])
   
   return (
@@ -63,8 +64,7 @@ const Home: NextPage = () => {
           <p>
             <button onClick={regenerate}>Regenerate</button>
           </p>
-          <p dangerouslySetInnerHTML={{__html: lipsum}}>
-          </p>
+          {lipsumDiv}
         </section>
       </main>
 

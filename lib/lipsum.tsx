@@ -73,7 +73,7 @@ export const resolveArticles = (str: string) => {
 	return str.replace(/(a)rtIndef( —|\.\.\.|[,;:])? (\S+)/gi, (match, ltr1: string, punct1: string = '', word2: string) => {
 		const n: string = word2.match(/^[aeiou]/) ? 'n' : ''
 		return `${ltr1}${n}${punct1} ${word2}`
-	})
+	}).replace(/artIndef\./g, 'anymore.')
 }
 
 const addPunctuation = (str: string) => {
@@ -158,7 +158,7 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 		}
 
 		if (aSentence.length > minLen) {
-			if (Utils.randomChance(8)) {
+			if (Utils.randomChance(15)) {
 				break
 			}
 		}
@@ -201,6 +201,42 @@ export const generateLipsum = (howMany: number, whatUnits: string) => {
 			toReturn.push(generateParagraph())
 		}
 		return toReturn.join('<br/><br/>')
+
+	}
+}
+
+
+export const generateParagraphElem = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, key?: number}) => {
+	const english = opts?.english || Lang.english
+	let newyork = opts?.newyork || Lang.newyork
+	const maxLen = opts?.maxLen || MAX_SENTENCES_PER_PARA
+	const minLen = opts?.minLen || MIN_SENTENCES_PER_PARA
+
+	const sentences: string[] = []
+
+	const key: string = opts?.key ? opts.key.toString() : "foo"
+
+	const howMany = Math.floor(Math.random() * ((maxLen+1) - minLen) + minLen)
+	while (sentences.length < howMany) {
+		sentences.push(generateRandomSentence())
+	}
+	return <p key={key}>{sentences.join(' ')}</p>
+}
+
+
+export const generateLipsumDiv = (howMany: number, whatUnits: string) => {
+	const toReturn: any[] = []
+
+	if (whatUnits === "sentences") {
+		while (toReturn.length < howMany) {
+			toReturn.push(generateRandomSentence())
+		}
+		return <div id="lipsum">{toReturn.join(' ')}</div>
+	} else {
+		while (toReturn.length < howMany) {
+			toReturn.push(generateParagraphElem({key: toReturn.length}))
+		}
+		return <div id="lipsum">{toReturn}</div>
 
 	}
 }
