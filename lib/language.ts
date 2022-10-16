@@ -43,6 +43,10 @@ export const english: Word[] = [
 	//
 
 	{
+		word: "alert",
+		pos: "adjective",
+	},
+	{
 		word: "ample",
 		pos: "adjective",
 	},
@@ -134,6 +138,10 @@ export const english: Word[] = [
 		pos: "adjective",
 	},
 	{
+		word: "sleepy",
+		pos: "adjective",
+	},
+	{
 		word: "small",
 		pos: "adjective",
 	},
@@ -201,6 +209,10 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "baton",
+		pos: "noun",
+	},
+	{
 		word: "bed",
 		pos: "noun",
 		tags: [ "furniture" ],
@@ -253,6 +265,10 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "door",
+		pos: "noun",
+	},
+	{
 		word: "dinner",
 		pos: "noun",
 	},
@@ -285,6 +301,10 @@ export const english: Word[] = [
 		word: "fox",
 		pos: "noun",
 		tags: [ "animal" ],
+	},
+	{
+		word: "handbag",
+		pos: "noun",
 	},
 	{
 		word: "hat",
@@ -361,6 +381,10 @@ export const english: Word[] = [
 	},
 	{
 		word: "twin",
+		pos: "noun",
+	},
+	{
+		word: "window",
 		pos: "noun",
 	},
 
@@ -503,6 +527,11 @@ export const english: Word[] = [
 		type: "umlaut:sang",
 	},
 	{
+		word: "to sleep",
+		pos: "verb",
+		type: "umlaut:slept",
+	},
+	{
 		word: "to speak",
 		pos: "verb",
 		type: "umlaut:spoke",
@@ -511,6 +540,10 @@ export const english: Word[] = [
 		word: "to speed",
 		pos: "verb",
 		type: "umlaut:sped",
+	},
+	{
+		word: "to stand",
+		pos: "verb",
 	},
 	{
 		word: "to starve",
@@ -706,7 +739,7 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
-		word: "How 'bout those Mets?",
+		word: "How &rsquo;bout those Mets?",
 		pos: "sentence",
 	},
 	{
@@ -715,6 +748,14 @@ export const newyork: Word[] = [
 	},
 	{
 		word: "I'm walkin' here!",
+		pos: "sentence",
+	},
+	{
+		word: "If you can&rsquo;t fold the slice, it ain&rsquo;t pizza.",
+		pos: "sentence",
+	},
+	{
+		word: "If you can make it there, you can make it anywhere.",
 		pos: "sentence",
 	},
 	{
@@ -736,6 +777,10 @@ export const newyork: Word[] = [
 	{
 		word: "Mets",
 		pos: "proper",
+	},
+	{
+		word: "noise is always loud, there are sirens all around",
+		pos: "phrase",
 	},
 	{
 		word: "Pepsi-Cola sign",
@@ -766,12 +811,20 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "take the &ldquo;A&rdquo; train",
+		pos: "phrase",
+	},
+	{
 		word: "Todt Hill",
 		pos: "proper",
 	},
 	{
 		word: "the Unisphere",
 		pos: "proper",
+	},
+	{
+		word: "Walking down Canal Street, knocking on every door...",
+		pos: "sentence",
 	},
 	{
 		word: "Yankee Stadium",
