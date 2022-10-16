@@ -21,7 +21,7 @@ export const oneFromExcept = (arr: Array<any>, except: Array<any>) => {
 }
 
 export const pluralize = (str: string): string => {
-	const ownPlurals = 'pants jeans traffic'.split(' ')
+	const ownPlurals = 'jeans moose pants sheep traffic'.split(' ')
 	if (ownPlurals.includes(str)) {
 		return str
 	}
