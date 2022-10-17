@@ -56,7 +56,7 @@ export const conjugateVerb = (verb: Lang.Word, tense: Tense, person: Person = "1
 			if (verb.type?.startsWith("umlaut")) {
 				return verb.type.substring(verb.type.indexOf(':')+1)
 			}
-			return `${head}ed`.replace(/([aeiou])([pbdmn])ed$/, "$1$2$2ed").replace(/eed$/, 'ed').replace(/ayed$/, 'aid').replace(/yed$/, 'ied')
+			return `${head}ed`.replace(/([^aeiou][aeiou])([pbdmn])ed$/, "$1$2$2ed").replace(/eed$/, 'ed').replace(/ayed$/, 'aid').replace(/yed$/, 'ied')
 		case "present":
 			if (person === "3sg") {
 				return `${head}s`.replace(/([^aeiou])ys$/, '$1ies')

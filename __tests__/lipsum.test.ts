@@ -108,6 +108,8 @@ describe('Lipsum', () => {
 			{ type: "regular", infinitive: { word: "to mop", pos: "verb"}, past: "mopped", present: "mop", present3sg: "mops", continuative: "mopping", future: "will mop"},
 			{ type: "regular", infinitive: { word: "to mope", pos: "verb"}, past: "moped", present: "mope", present3sg: "mopes", continuative: "moping", future: "will mope"},
 			{ type: "regular", infinitive: { word: "to try", pos: "verb"}, past: "tried", present: "try", present3sg: "tries", continuative: "trying", future: "will try"},
+			{ type: "regular", infinitive: { word: "to dream", pos: "verb"}, past: "dreamed", present: "dream", present3sg: "dreams", continuative: "dreaming", future: "will dream"},
+			{ type: "regular", infinitive: { word: "to sizzle", pos: "verb"}, past: "sizzled", present: "sizzle", present3sg: "sizzles", continuative: "sizzling", future: "will sizzle"},
 			{ type: "irregular", infinitive: { word: "to play", pos: "verb", type: "irrregular:past:played"}, past: "played", present: "play", present3sg: "plays", continuative: "playing", future: "will play"},
 			{ type: "regular", infinitive: { word: "to carry", pos: "verb"}, past: "carried", present: "carry", present3sg: "carries", continuative: "carrying", future: "will carry"},
 			{ type: "umlaut", infinitive: { word: "to speed", pos: "verb", type: "umlaut:sped"}, past: "sped", present: "speed", present3sg: "speeds", continuative: "speeding", future: "will speed"},
