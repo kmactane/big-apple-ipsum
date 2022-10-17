@@ -172,41 +172,7 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 }
 
 
-export const generateParagraph = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number}) => {
-	const english = opts?.english || Lang.english
-	let newyork = opts?.newyork || Lang.newyork
-	const maxLen = opts?.maxLen || MAX_SENTENCES_PER_PARA
-	const minLen = opts?.minLen || MIN_SENTENCES_PER_PARA
-
-	const sentences: string[] = []
-
-	const howMany = Math.floor(Math.random() * ((maxLen+1) - minLen) + minLen)
-	while (sentences.length < howMany) {
-		sentences.push(generateRandomSentence())
-	}
-	return sentences.join(' ')
-}
-
-
-export const generateLipsum = (howMany: number, whatUnits: string) => {
-	const toReturn: string[] = []
-
-	if (whatUnits === "sentences") {
-		while (toReturn.length < howMany) {
-			toReturn.push(generateRandomSentence())
-		}
-		return toReturn.join(' ')
-	} else {
-		while (toReturn.length < howMany) {
-			toReturn.push(generateParagraph())
-		}
-		return toReturn.join('<br/><br/>')
-
-	}
-}
-
-
-export const generateParagraphElem = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, key?: number}) => {
+export const generateParagraph = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, key?: number}) => {
 	const english = opts?.english || Lang.english
 	let newyork = opts?.newyork || Lang.newyork
 	const maxLen = opts?.maxLen || MAX_SENTENCES_PER_PARA
@@ -224,19 +190,19 @@ export const generateParagraphElem = (opts?: {english?: Lang.Word[], newyork?: L
 }
 
 
-export const generateLipsumDiv = (howMany: number, whatUnits: string) => {
+export const generateLipsum = (howMany: number, whatUnits: string) => {
 	const toReturn: any[] = []
 
 	if (whatUnits === "sentences") {
 		while (toReturn.length < howMany) {
 			toReturn.push(generateRandomSentence())
 		}
-		return <div id="lipsum">{toReturn.join(' ')}</div>
+		return <div id="lipsum" data-testid="lipsum">{toReturn.join(' ')}</div>
 	} else {
 		while (toReturn.length < howMany) {
-			toReturn.push(generateParagraphElem({key: toReturn.length}))
+			toReturn.push(generateParagraph({key: toReturn.length}))
 		}
-		return <div id="lipsum">{toReturn}</div>
+		return <div id="lipsum" data-testid="lipsum">{toReturn}</div>
 
 	}
 }

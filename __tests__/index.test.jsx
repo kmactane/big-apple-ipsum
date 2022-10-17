@@ -70,4 +70,19 @@ describe('Home', () => {
       expect(lSent.value).toBe("sentences")
     })
   })
+
+  describe('regenerate button', () => {
+    beforeEach(() => {
+      render(<Home />)
+    })
+    
+    it('the button changes the lipsum text', () => {
+      const regen = screen.getByRole('button', {name: /Regenerate/})
+      const lipsum = screen.queryByTestId('lipsum')
+      const lipsumText = lipsum.textContent
+      fireEvent.click(regen)
+      const newLipsumText = lipsum.textContent
+      expect(newLipsumText).not.toEqual(lipsumText)
+    })
+  })
 })
