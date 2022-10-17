@@ -86,6 +86,14 @@ export const english: Word[] = [
 		pos: "adjective",
 	},
 	{
+		word: "fluffy",
+		pos: "adjective",
+	},
+	{
+		word: "fuzzy",
+		pos: "adjective",
+	},
+	{
 		word: "green",
 		pos: "adjective",
 		tags: [ "color" ],
@@ -94,6 +102,10 @@ export const english: Word[] = [
 		word: "grey",
 		pos: "adjective",
 		tags: [ "color" ],
+	},
+	{
+		word: "hairy",
+		pos: "adjective",
 	},
 	{
 		word: "historic",
@@ -116,9 +128,21 @@ export const english: Word[] = [
 		pos: "adjective",
 	},
 	{
+		word: "naked",
+		pos: "adjective",
+	},
+	{
 		word: "purple",
 		pos: "adjective",
 		tags: [ "color" ],
+	},
+	{
+		word: "precarious",
+		pos: "adjective",
+	},
+	{
+		word: "precious",
+		pos: "adjective",
 	},
 	{
 		word: "pretty",
@@ -151,6 +175,10 @@ export const english: Word[] = [
 	},
 	{
 		word: "spooky",
+		pos: "adjective",
+	},
+	{
+		word: "stark",
 		pos: "adjective",
 	},
 	{
@@ -502,6 +530,10 @@ export const english: Word[] = [
 		pos: "verb",
 	},
 	{
+		word: "to dream",
+		pos: "verb",
+	},
+	{
 		word: "to eat",
 		pos: "verb",
 		type: "umlaut:ate",
@@ -557,6 +589,10 @@ export const english: Word[] = [
 		word: "to sing",
 		pos: "verb",
 		type: "umlaut:sang",
+	},
+	{
+		word: "to sizzle",
+		pos: "verb",
 	},
 	{
 		word: "to sleep",
