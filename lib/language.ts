@@ -699,6 +699,10 @@ export const newyork: Word[] = [
 		pos: "phrase",
 	},
 	{
+		word: "the Bowery",
+		pos: "proper",
+	},
+	{
 		word: "Bronx cheer",
 		pos: "noun",
 	},
@@ -736,6 +740,10 @@ export const newyork: Word[] = [
 	},
 	{
 		word: "Citi Field",
+		pos: "proper",
+	},
+	{
+		word: "the Cloisters",
 		pos: "proper",
 	},
 	{
@@ -831,6 +839,14 @@ export const newyork: Word[] = [
 		pos: "sentence",
 	},
 	{
+		word: "Junior's cheesecake",
+		pos: "noun phrase",
+	},
+	{
+		word: "Katz's Deli",
+		pos: "proper",
+	},
+	{
 		word: "Knicks",
 		pos: "proper",
 	},
@@ -843,7 +859,19 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "Lincoln Center",
+		pos: "proper",
+	},
+	{
+		word: "Lincoln Tunnel",
+		pos: "proper",
+	},
+	{
 		word: "Long Island City",
+		pos: "proper",
+	},
+	{
+		word: "Manhattan Bridge",
 		pos: "proper",
 	},
 	{
@@ -871,6 +899,10 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "Queensboro Bridge",
+		pos: "proper",
+	},
+	{
 		word: "Silvercup Studios",
 		pos: "proper",
 	},
@@ -883,8 +915,32 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "Staten Island Ferry",
+		pos: "proper",
+	},
+	{
+		word: "Statue of Liberty",
+		pos: "proper",
+	},
+	{
 		word: "take the “A” train",
 		pos: "phrase",
+	},
+	{
+		word: "They say such things and they do strange things on the Bowery!",
+		pos: "sentence",
+	},
+	{
+		word: "Throg's Neck",
+		pos: "proper",
+	},
+	{
+		word: "Throg's Neck Bridge",
+		pos: "proper",
+	},
+	{
+		word: "Triborough Bridge",
+		pos: "proper",
 	},
 	{
 		word: "Todt Hill",
@@ -895,8 +951,20 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "Verrazzano-Narrows Bridge",
+		pos: "proper",
+	},
+	{
 		word: "Walking down Canal Street, knocking on every door...",
 		pos: "sentence",
+	},
+	{
+		word: "Washington Square",
+		pos: "proper",
+	},
+	{
+		word: "Williamsburg Bridge",
+		pos: "proper",
 	},
 	{
 		word: "Yankee Stadium",
