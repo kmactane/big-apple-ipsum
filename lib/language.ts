@@ -82,6 +82,10 @@ export const english: Word[] = [
 		pos: "adjective",
 	},
 	{
+		word: "dreamy",
+		pos: "adjective",
+	},
+	{
 		word: "fiery",
 		pos: "adjective",
 	},
@@ -387,6 +391,10 @@ export const english: Word[] = [
 		pos: "noun",
 	},
 	{
+		word: "progress",
+		pos: "noun",
+	},
+	{
 		word: "scarf",
 		pos: "noun",
 	},
@@ -534,6 +542,10 @@ export const english: Word[] = [
 		pos: "verb",
 	},
 	{
+		word: "to drift",
+		pos: "verb",
+	},
+	{
 		word: "to eat",
 		pos: "verb",
 		type: "umlaut:ate",
@@ -674,6 +686,10 @@ export const english: Word[] = [
 
 
 export const newyork: Word[] = [
+	{
+		word: "a beautiful catastrophe",
+		pos: "phrase",
+	},
 	{
 		word: "always warm in the subway",
 		pos: "phrase",
@@ -879,6 +895,10 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "nights downtown, it's a new town",
+		pos: "phrase",
+	},
+	{
 		word: "noise is always loud, there are sirens all around",
 		pos: "phrase",
 	},
@@ -892,6 +912,10 @@ export const newyork: Word[] = [
 	},
 	{
 		word: "playing stickball on the stoop",
+		pos: "phrase",
+	},
+	{
+		word: "please go easy on this heart of mine",
 		pos: "phrase",
 	},
 	{
@@ -943,6 +967,10 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "trip-hammer vitality which drives you insane with restlessness",
+		pos: "phrase",
+	},
+	{
 		word: "Todt Hill",
 		pos: "proper",
 	},
@@ -961,6 +989,10 @@ export const newyork: Word[] = [
 	{
 		word: "Washington Square",
 		pos: "proper",
+	},
+	{
+		word: "we have pulled down the stars to our will",
+		pos: "phrase",
 	},
 	{
 		word: "Williamsburg Bridge",
