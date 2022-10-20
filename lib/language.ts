@@ -803,6 +803,10 @@ export const newyork: Word[] = [
 		pos: "proper",
 	},
 	{
+		word: "from an uptown apartment to a knife on the “A” train",
+		pos: "phrase",
+	},
+	{
 		word: "Fuhgeddaboutit!",
 		pos: "sentence",
 	},
@@ -813,6 +817,10 @@ export const newyork: Word[] = [
 	{
 		word: "George Washington Bridge",
 		pos: "proper",
+	},
+	{
+		word: "gonna make a brand new start of it",
+		pos: "phrase",
 	},
 	{
 		word: "Grand Army Plaza",
@@ -951,6 +959,10 @@ export const newyork: Word[] = [
 		pos: "phrase",
 	},
 	{
+		word: "tell by my attitude that I’m most definitely from",
+		pos: "phrase",
+	},
+	{
 		word: "They say such things and they do strange things on the Bowery!",
 		pos: "sentence",
 	},
@@ -992,6 +1004,10 @@ export const newyork: Word[] = [
 	},
 	{
 		word: "we have pulled down the stars to our will",
+		pos: "phrase",
+	},
+	{
+		word: "They've got cars big as bars, they've got rivers of gold,",
 		pos: "phrase",
 	},
 	{
