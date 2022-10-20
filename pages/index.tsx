@@ -68,7 +68,7 @@ const Home: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
-        Made with 💓 in the best borough. 🗽
+        Made with ❤ in the best borough. 🗽
       </footer>
     </div>
   )
