@@ -963,7 +963,7 @@ export const newyork: Word[] = [
 		pos: "phrase",
 	},
 	{
-		word: "They've got cars big as bars, they've got rivers of gold",
+		word: "they've got cars big as bars, they've got rivers of gold",
 		pos: "phrase",
 	},
 	{
