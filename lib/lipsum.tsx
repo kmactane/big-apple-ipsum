@@ -2,6 +2,8 @@
 import * as Lang from "./language"
 import * as Utils from './utils'
 
+import styles from '../styles/Home.module.css'
+
 export const MIN_WORDS_IN_SENTENCE = 10
 export const MAX_WORDS_IN_SENTENCE = 23
 export const DEFAULT_NYC_PERCENT = 25
@@ -197,12 +199,12 @@ export const generateLipsum = (howMany: number, whatUnits: string) => {
 		while (toReturn.length < howMany) {
 			toReturn.push(generateRandomSentence())
 		}
-		return <div id="lipsum" data-testid="lipsum">{toReturn.join(' ')}</div>
+		return <div id={styles.lipsum} data-testid="lipsum">{toReturn.join(' ')}</div>
 	} else {
 		while (toReturn.length < howMany) {
 			toReturn.push(generateParagraph({key: toReturn.length}))
 		}
-		return <div id="lipsum" data-testid="lipsum">{toReturn}</div>
+		return <div id={styles.lipsum} data-testid="lipsum">{toReturn}</div>
 
 	}
 }

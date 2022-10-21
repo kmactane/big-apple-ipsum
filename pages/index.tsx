@@ -50,17 +50,23 @@ const Home: NextPage = () => {
         </section>
         
         <section>
-          <p>
-            Generate{' '}
-            <label htmlFor="howMany" className={styles.srOnly}>how many</label>
-            <input type="number" min="1" max="9" name="howMany" id="howMany" value={howMany} onChange={handleHowMany} />
-            <br />
-            <label htmlFor="sentences"><input type="radio" name="whatUnits" id="sentences" value="sentences" onChange={handleWhatUnits} checked={whatUnits === "sentences"} />sentences</label><br />
-            <label htmlFor="paragraphs"><input type="radio" name="whatUnits" id="paragraphs" value="paragraphs" onChange={handleWhatUnits} />paragraphs</label>
-            <br />
-            of Big Apple Ipsum.
-          </p>
-          <p>
+          <form>
+            <div className={`${styles.chunk} ${styles.howMany}`}>
+              Generate{' '}
+              <label htmlFor="howMany" className={styles.srOnly}>how many</label>
+              <input type="number" min="1" max="9" name="howMany" id="howMany" value={howMany} onChange={handleHowMany} />
+            </div>
+            
+            <div className={`${styles.chunk} ${styles.whatUnits}`}>
+              <label htmlFor="sentences"><input type="radio" name="whatUnits" id="sentences" value="sentences" onChange={handleWhatUnits} checked={whatUnits === "sentences"} />sentences</label><br />
+              <label htmlFor="paragraphs"><input type="radio" name="whatUnits" id="paragraphs" value="paragraphs" onChange={handleWhatUnits} />paragraphs</label>
+            </div>
+            
+            <div className={`${styles.chunk} ${styles.final}`}>
+              of Big Apple Ipsum.
+            </div>
+          </form>
+          <p className={styles.regen}>
             <button onClick={regenerate}>Regenerate</button>
           </p>
           {lipsum}
