@@ -963,6 +963,10 @@ export const newyork: Word[] = [
 		pos: "phrase",
 	},
 	{
+		word: "They've got cars big as bars, they've got rivers of gold",
+		pos: "phrase",
+	},
+	{
 		word: "They say such things and they do strange things on the Bowery!",
 		pos: "sentence",
 	},
@@ -1004,10 +1008,6 @@ export const newyork: Word[] = [
 	},
 	{
 		word: "we have pulled down the stars to our will",
-		pos: "phrase",
-	},
-	{
-		word: "They've got cars big as bars, they've got rivers of gold,",
 		pos: "phrase",
 	},
 	{
