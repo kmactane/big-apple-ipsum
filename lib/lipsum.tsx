@@ -18,7 +18,7 @@ export type npOpts = {force?: aOpts, noun?: "proper" | "improper", english?: Lan
 export type ppOpts = {force?: string | string[], nForce?: aOpts, used?: Lang.Word[], english?: Lang.Word[], newyork?: Lang.Word[]}
 
 export const getWordOfType = (type: string, used: Lang.Word[], opts?: {english?: Lang.Word[], newyork?: Lang.Word[], useNyc?: boolean}): Lang.Word => {
-	const english = opts?.english || Lang.english
+	const english = opts?.english || Lang.latin
 	const newyork = opts?.newyork || Lang.newyork
 	let usedWords: string[] = []
 	let usedTags: string[] = []
@@ -117,7 +117,7 @@ const processWord = (word: Lang.Word): string => {
 
 export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, nycPercent: number}) => {
 	let aSentence: string[] = []
-	const english = opts?.english || Lang.english
+	const english = opts?.english || Lang.latin
 	let newyork = opts?.newyork || Lang.newyork
 	const maxLen = opts?.maxLen || MAX_WORDS_IN_SENTENCE
 	const minLen = opts?.minLen || MIN_WORDS_IN_SENTENCE
