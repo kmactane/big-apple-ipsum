@@ -967,6 +967,10 @@ export const newyork: Word[] = [
 		pos: "phrase",
 	},
 	{
+		word: "they say the neon lights are bright",
+		pos: "phrase",
+	},
+	{
 		word: "They say such things and they do strange things on the Bowery!",
 		pos: "sentence",
 	},
