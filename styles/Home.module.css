@@ -23,12 +23,28 @@
 }
 
 .chunk {
-  display: block;
+  display: inline-block;
   /* border: 1px dotted green; */
   margin-left: 1.5em;
+  min-width: 60%;
+}
+
+.chunk.final {
+  margin-right: 40%;
+}
+
+.chunk.newLine {
+  margin-top: 1em;
+}
+
+label.indented {
+  display: inline-block;
+  padding-left: 44px;
+  text-indent: -22px;
 }
 
 .regen {
+  clear: left;
   margin-left: 1.5em;
 }
 
@@ -65,17 +81,28 @@
   font-size: 2rem;
 }
 
-
+div.sDown{
+  display: block;
+}
+span.sDown {
+  display: inline;
+}
 
 .mUp,
 .lUp {
   display: none;
 }
 @media (min-width: 500px) {
-  div.mUp {
+  div.sDown,
+  span.sDown {
+    display: none;
+  }
+  div.mUp,
+  div.mDown {
     display: block;
   }
-  span.mUp {
+  span.mUp,
+  span.mDown {
     display: inline;
   }
   .title {
@@ -83,9 +110,9 @@
   }
   .chunk {
     display: inline-block;
-    /* border: 1px dotted green; */
     vertical-align: top;
     margin-left: 0;
+    min-width: auto;
   }
   .chunk.whatUnits,
   .chunk.final {
@@ -93,11 +120,16 @@
   }
   .regen {
     margin-left: 0;
-    margin-top: 0.5em;
   }
 }
 
 @media (min-width: 900px) {
+  div.sDown,
+  span.sDown,
+  div.mDown,
+  span.mDown {
+    display: none;
+  }
   div.lUp {
     display: block;
   }

@@ -11,6 +11,13 @@ const Home: NextPage = () => {
   
   const [howMany, setHowMany] = useState(3)
   const [whatUnits, setWhatUnits] = useState("sentences")
+
+  const [includeLatin, setIncludeLatin] = useState(false)
+  const [includeEnglish, setIncludeEnglish] = useState(true)
+  const [startLoremIpsum, setStartLoremIpsum]  = useState(false)
+
+  const [disableStartLoremIpsum, setDisableStartLoremIpsum] = useState(true)
+  const [disableNoEnglish, setDisableNoEnglish] = useState(true)
   
   const handleHowMany = (evt: ChangeEvent<HTMLInputElement>) => {
     setHowMany(parseInt(evt.target.value))
@@ -19,18 +26,36 @@ const Home: NextPage = () => {
   const handleWhatUnits = (evt: ChangeEvent<HTMLInputElement>) => {
     setWhatUnits(evt.target.value)
   }
+
+  const handleIncludeLatin = (evt: ChangeEvent<HTMLInputElement>) => {
+    setIncludeLatin(evt.target.checked)
+    setDisableStartLoremIpsum(!evt.target.checked)
+    setDisableNoEnglish(!evt.target.checked)
+  }
+  
+  const handleStartLoremIpsum = (evt: ChangeEvent<HTMLInputElement>) => {
+    setStartLoremIpsum(evt.target.checked)
+  }
+  
+  const handleNoEnglish = (evt: ChangeEvent<HTMLInputElement>) => {
+    setIncludeEnglish(!evt.target.checked)
+  }
+
+  const whichLanguages = (): string => {
+    return (includeEnglish && includeLatin) ? "both" : includeEnglish ? "english" : "latin"
+  }
   
   const regenerate = () => {
-    setLipsum(generateLipsum(howMany, whatUnits))
+    setLipsum(generateLipsum(howMany, whatUnits, whichLanguages(), startLoremIpsum))
   }
   
   useEffect(() => {
-    setLipsum(generateLipsum(howMany, whatUnits))
+    setLipsum(generateLipsum(howMany, whatUnits, whichLanguages(), startLoremIpsum))
   }, [])
   
   useEffect(() => {
-    setLipsum(generateLipsum(howMany, whatUnits))
-  }, [howMany, whatUnits])
+    setLipsum(generateLipsum(howMany, whatUnits, whichLanguages(), startLoremIpsum))
+  }, [howMany, whatUnits, includeEnglish, includeLatin, startLoremIpsum])
   
   return (
     <div className={styles.container}>
@@ -64,6 +89,13 @@ const Home: NextPage = () => {
             
             <div className={`${styles.chunk} ${styles.final}`}>
               of Big Apple Ipsum.
+            </div>
+
+            <div className={`${styles.chunk} ${styles.newLine}`}>
+              <label htmlFor="includeLatin"><input type="checkbox" name="includeLatin" id="includeLatin" onChange={handleIncludeLatin}/>Include Latin</label><br />
+              <label htmlFor="startLoremIpsum" className={`${styles.indented}`}><input type="checkbox" name="startLoremIpsum" id="startLoremIpsum" onChange={handleStartLoremIpsum} disabled={disableStartLoremIpsum}/>Start with "Lorem ipsum dolor sit amet..."</label><br />
+              <label htmlFor="noEnglish" className={`${styles.indented}`}><input type="checkbox" name="noEnglish" id="noEnglish" onChange={handleNoEnglish} disabled={disableNoEnglish}/>No English (except NYC terms)</label>
+
             </div>
           </form>
           <p className={styles.regen}>

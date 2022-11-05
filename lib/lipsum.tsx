@@ -11,6 +11,8 @@ export const DEFAULT_NYC_PERCENT = 25
 export const MIN_SENTENCES_PER_PARA = 2
 export const MAX_SENTENCES_PER_PARA = 5
 
+const LOREM_LEADIN = "Lorem ipsum dolor sit amet, "
+
 export type Tense = "present" | "past" | "continuative" | "future"
 type Person = "1sg" | "2sg" | "3sg" | "1pl" | "2pl" | "3pl"
 type aOpts = "singular" | "plural" | "definite" | "indefinite"
@@ -18,7 +20,7 @@ export type npOpts = {force?: aOpts, noun?: "proper" | "improper", english?: Lan
 export type ppOpts = {force?: string | string[], nForce?: aOpts, used?: Lang.Word[], english?: Lang.Word[], newyork?: Lang.Word[]}
 
 export const getWordOfType = (type: string, used: Lang.Word[], opts?: {english?: Lang.Word[], newyork?: Lang.Word[], useNyc?: boolean}): Lang.Word => {
-	const english = opts?.english || Lang.english
+	const english = opts?.english || Lang.latin
 	const newyork = opts?.newyork || Lang.newyork
 	let usedWords: string[] = []
 	let usedTags: string[] = []
@@ -114,12 +116,22 @@ const processWord = (word: Lang.Word): string => {
 	return word.word
 }
 
+const getLanguage = (languages: string) => {
+	if (languages === "english") {
+		return Lang.english
+	} else if (languages === "latin") {
+		return Lang.latin
+	} else {
+		return Lang.english.concat(Lang.latin)
+	}
+}
 
-export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, nycPercent: number}) => {
+
+export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, nycPercent?: number, prefixLoremIpsum?: boolean}) => {
 	let aSentence: string[] = []
-	const english = opts?.english || Lang.english
+	const english = opts?.english || Lang.latin
 	let newyork = opts?.newyork || Lang.newyork
-	const maxLen = opts?.maxLen || MAX_WORDS_IN_SENTENCE
+	let maxLen = opts?.maxLen || MAX_WORDS_IN_SENTENCE
 	const minLen = opts?.minLen || MIN_WORDS_IN_SENTENCE
 	const nycPercent1 = opts?.nycPercent || DEFAULT_NYC_PERCENT
 	const nycPercent2 = nycPercent1 + 10
@@ -129,7 +141,11 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 	let engUsed: Lang.Word[] = []
 	let nycUsed: Lang.Word[] = []
 
-	if (Utils.randomChance(8)) {
+	if (opts?.prefixLoremIpsum) {
+		maxLen -= 5
+	}
+
+	if (!opts?.prefixLoremIpsum && Utils.randomChance(8)) {
 		return Utils.oneFrom(newyork.filter(x => x.pos === "sentence")).word
 	}
 
@@ -166,6 +182,9 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 		}
 	}
 	let sSentence: string = aSentence.join(' ')
+	if (opts?.prefixLoremIpsum) {
+		sSentence = LOREM_LEADIN + sSentence
+	}
 	sSentence = Utils.ucFirst(sSentence).trim() + '.'
 	sSentence = sSentence.replace(/( —|\.\.\.|[,;:])\.$/, '.')
 	sSentence = resolveArticles(sSentence)
@@ -174,7 +193,7 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 }
 
 
-export const generateParagraph = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, key?: number}) => {
+export const generateParagraph = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, key?: number, prefixLoremIpsum?: boolean}) => {
 	const english = opts?.english || Lang.english
 	let newyork = opts?.newyork || Lang.newyork
 	const maxLen = opts?.maxLen || MAX_SENTENCES_PER_PARA
@@ -186,23 +205,33 @@ export const generateParagraph = (opts?: {english?: Lang.Word[], newyork?: Lang.
 
 	const howMany = Math.floor(Math.random() * ((maxLen+1) - minLen) + minLen)
 	while (sentences.length < howMany) {
-		sentences.push(generateRandomSentence())
+		sentences.push(generateRandomSentence({prefixLoremIpsum: (opts?.prefixLoremIpsum && sentences.length === 0)}))
 	}
 	return <p key={key}>{sentences.join(' ')}</p>
 }
 
 
-export const generateLipsum = (howMany: number, whatUnits: string) => {
+export const generateLipsum = (howMany: number, whatUnits: string, languages: string, prefixLoremIpsum?: boolean) => {
 	const toReturn: any[] = []
+	const english = getLanguage(languages)
+	console.log(`English: ${Lang.english.length}; Latin: ${Lang.latin.length}; total: ${english.length}`);
 
 	if (whatUnits === "sentences") {
 		while (toReturn.length < howMany) {
-			toReturn.push(generateRandomSentence())
+			if (toReturn.length === 0) {
+				toReturn.push(generateRandomSentence({english, prefixLoremIpsum}))
+			} else {
+				toReturn.push(generateRandomSentence({english}))
+			}
 		}
 		return <div id={styles.lipsum} data-testid="lipsum">{toReturn.join(' ')}</div>
 	} else {
 		while (toReturn.length < howMany) {
-			toReturn.push(generateParagraph({key: toReturn.length}))
+			if (toReturn.length === 0) {
+				toReturn.push(generateParagraph({key: toReturn.length, english, prefixLoremIpsum}))
+			} else {
+				toReturn.push(generateParagraph({key: toReturn.length, english}))
+			}
 		}
 		return <div id={styles.lipsum} data-testid="lipsum">{toReturn}</div>
 
