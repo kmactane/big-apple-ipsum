@@ -1,5 +1,14 @@
+
 .container {
+  --nycBlue: #003884;
+  --nycOrange: #ff6600;
+  --nycWhite: #ffffff;
+  --pageBg: #eeeeee;
+}
+.container {
+  background: linear-gradient(177deg, var(--nycBlue) 24px, var(--nycWhite) 25px, var(--nycWhite) 29px, var(--nycOrange) 30px, var(--nycOrange) 39px, var(--pageBg) 40px);
   padding: 0 2rem;
+  color: var(--nycBlue);
 }
 
 .srOnly {
@@ -8,19 +17,38 @@
   position: absolute;
   left: -9999px;
 }
+
+div.sDown{
+  display: block;
+}
+span.sDown {
+  display: inline;
+}
+
+.mUp,
+.lUp {
+  display: none;
+}
+
+
+
 .main {
   min-height: 80vh;
   padding: 1rem 0;
-  /*flex: 1;*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
 }
 
 .main input[type=number] {
   width: 4em;
 }
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 2rem;
+  margin-top: 20px;
+  /* text-shadow: 1px 1px 0px #ff6600, -1px 1px 0px #ff6600, -1px -1px 0px #ff6600, 1px -1px 0px #ff6600; */
+}
+
 
 .chunk {
   display: inline-block;
@@ -46,6 +74,15 @@ label.indented {
 .regen {
   clear: left;
   margin-left: 1.5em;
+}
+
+.regen button {
+  background-color: var(--nycBlue);
+  color: var(--nycWhite);
+  border: none;
+  border-radius: 8px;
+  font-size: 125%;
+  padding: 0.25em 1em;
 }
 
 #lipsum {
@@ -75,25 +112,14 @@ label.indented {
   flex-grow: 1;
 }
 
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 2rem;
-}
 
-div.sDown{
-  display: block;
-}
-span.sDown {
-  display: inline;
-}
-
-.mUp,
-.lUp {
-  display: none;
-}
 @media (min-width: 500px) {
-  div.sDown,
+  .container {
+    background: linear-gradient(177deg, var(--nycBlue) 37px, var(--nycWhite) 38px, var(--nycWhite) 42px, var(--nycOrange) 43px, var(--nycOrange) 52px, var(--pageBg) 53px);
+    min-height: 100vh;
+  }
+
+    div.sDown,
   span.sDown {
     display: none;
   }
@@ -107,6 +133,7 @@ span.sDown {
   }
   .title {
     font-size: 2.5rem;
+    margin-top: 30px;
   }
   .chunk {
     display: inline-block;
@@ -124,6 +151,11 @@ span.sDown {
 }
 
 @media (min-width: 900px) {
+  .container {
+    background: linear-gradient(177deg, var(--nycBlue) 69px, var(--nycWhite) 70px, var(--nycWhite) 74px, var(--nycOrange) 75px, var(--nycOrange) 84px, var(--pageBg) 85px);
+    min-height: 100vh;
+  }
+
   div.sDown,
   span.sDown,
   div.mDown,
@@ -136,19 +168,15 @@ span.sDown {
   span.lUp {
     display: inline;
   }
-  .title {
+  .main {
+    min-height: 85vh;
+  }
+    .title {
     font-size: 3rem;
+    margin-top: 55px;
   }
 }
 
-
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-}
 
 @media (prefers-color-scheme: dark) {
   .card,
