@@ -31,6 +31,10 @@ const Home: NextPage = () => {
     setIncludeLatin(evt.target.checked)
     setDisableStartLoremIpsum(!evt.target.checked)
     setDisableNoEnglish(!evt.target.checked)
+    if (!evt.target.checked) {
+      setStartLoremIpsum(false)
+      setIncludeEnglish(true)
+    }
   }
   
   const handleStartLoremIpsum = (evt: ChangeEvent<HTMLInputElement>) => {
@@ -57,6 +61,10 @@ const Home: NextPage = () => {
     setLipsum(generateLipsum(howMany, whatUnits, whichLanguages(), startLoremIpsum))
   }, [howMany, whatUnits, includeEnglish, includeLatin, startLoremIpsum])
   
+  let mainClass = styles.main
+  if (!includeLatin) {
+    mainClass = `${styles.main} ${styles.noLatin}`
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -65,7 +73,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className={mainClass}>
         <h1 data-testid="h1" className={styles.title}>
           Big Apple Ipsum
         </h1>
@@ -93,8 +101,8 @@ const Home: NextPage = () => {
 
             <div className={`${styles.chunk} ${styles.newLine}`}>
               <label htmlFor="includeLatin"><input type="checkbox" name="includeLatin" id="includeLatin" onChange={handleIncludeLatin}/>Include Latin</label><br />
-              <label htmlFor="startLoremIpsum" className={`${styles.indented}`}><input type="checkbox" name="startLoremIpsum" id="startLoremIpsum" onChange={handleStartLoremIpsum} disabled={disableStartLoremIpsum}/>Start with "Lorem ipsum dolor sit amet..."</label><br />
-              <label htmlFor="noEnglish" className={`${styles.indented}`}><input type="checkbox" name="noEnglish" id="noEnglish" onChange={handleNoEnglish} disabled={disableNoEnglish}/>No English (except NYC terms)</label>
+              <label htmlFor="startLoremIpsum" className={`${styles.indented} ${styles.latinOnly}`}><input type="checkbox" name="startLoremIpsum" id="startLoremIpsum" onChange={handleStartLoremIpsum} disabled={disableStartLoremIpsum}/>Start with "Lorem ipsum dolor sit amet..."</label><br />
+              <label htmlFor="noEnglish" className={`${styles.indented} ${styles.latinOnly}`}><input type="checkbox" name="noEnglish" id="noEnglish" onChange={handleNoEnglish} disabled={disableNoEnglish}/>No English (except NYC terms)</label>
 
             </div>
           </form>
