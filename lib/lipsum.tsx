@@ -6,7 +6,13 @@ import styles from '../styles/Home.module.css'
 
 export const MIN_WORDS_IN_SENTENCE = 10
 export const MAX_WORDS_IN_SENTENCE = 23
-export const DEFAULT_NYC_PERCENT = 25
+
+// This means "maximum number of non-NYC words IN A ROW" in a
+// single output sentence. If it's 1, you can only have a single
+// non-NYC word in between the NYC words, so it'll strictly
+// alternate between NYC and not (but note that most "NYC words"
+// are actually multi-word phrases).
+export const MAX_NON_NYC_WORDS = 5
 
 export const MIN_SENTENCES_PER_PARA = 2
 export const MAX_SENTENCES_PER_PARA = 5
@@ -127,19 +133,20 @@ const getLanguage = (languages: string) => {
 }
 
 
-export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, nycPercent?: number, prefixLoremIpsum?: boolean}) => {
+export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: Lang.Word[], maxLen?: number, minLen?: number, maxNonNycWords?: number, prefixLoremIpsum?: boolean}) => {
 	let aSentence: string[] = []
 	const english = opts?.english || Lang.latin
 	let newyork = opts?.newyork || Lang.newyork
 	let maxLen = opts?.maxLen || MAX_WORDS_IN_SENTENCE
 	const minLen = opts?.minLen || MIN_WORDS_IN_SENTENCE
-	const nycPercent1 = opts?.nycPercent || DEFAULT_NYC_PERCENT
-	const nycPercent2 = nycPercent1 + 10
+	const maxNonNycWords = opts?.maxNonNycWords || MAX_NON_NYC_WORDS
 
 	let engWords: string[] = []
 	let nycWords: string[] = []
 	let engUsed: Lang.Word[] = []
 	let nycUsed: Lang.Word[] = []
+
+	let nycWordsAgo = 0
 
 	if (opts?.prefixLoremIpsum) {
 		maxLen -= 5
@@ -149,14 +156,14 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 		return Utils.oneFrom(newyork.filter(x => x.pos === "sentence")).word
 	}
 
+	// We didn't return a full setnence to begin with, so yank those
+	// from the NYC "word" list.
 	newyork = Utils.clone(newyork).filter((x: Lang.Word) => x.pos !== "sentence")
 
 	while (aSentence.length < maxLen) {
 		let newStuff
 		let wordsLeft = maxLen - aSentence.length
-		let useNyc = (nycWords.length) ?
-			((nycWords.length / (engWords.length + nycWords.length) * 100) < nycPercent2) :
-			Utils.randomChance(nycPercent1 + (5 * (engWords.length - 1)))
+		let useNyc = Utils.randomChance(nycWordsAgo * (100 / maxNonNycWords))
 		if (useNyc) {
 			newStuff = Utils.oneFromExcept(
 				newyork.filter(w => w.word.split(' ').length <= wordsLeft),
@@ -164,10 +171,12 @@ export const generateRandomSentence = (opts?: {english?: Lang.Word[], newyork?: 
 			)
 			nycUsed.push(newStuff)
 			nycWords = nycWords.concat(newStuff.word.split(' '))
+			nycWordsAgo = 0
 		} else {
 			newStuff = Utils.oneFromExcept(english, engUsed)
 			engUsed.push(newStuff)
 			engWords = engWords.concat(newStuff.word.split(' '))
+			nycWordsAgo++
 		}
 		aSentence = aSentence.concat(processWord(newStuff).split(' '))
 
@@ -214,7 +223,6 @@ export const generateParagraph = (opts?: {english?: Lang.Word[], newyork?: Lang.
 export const generateLipsum = (howMany: number, whatUnits: string, languages: string, prefixLoremIpsum?: boolean) => {
 	const toReturn: any[] = []
 	const english = getLanguage(languages)
-	console.log(`English: ${Lang.english.length}; Latin: ${Lang.latin.length}; total: ${english.length}`);
 
 	if (whatUnits === "sentences") {
 		while (toReturn.length < howMany) {
