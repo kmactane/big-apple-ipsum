@@ -65,8 +65,18 @@ span.sDown {
   color: var(--nycWhite);
 }
 
+
 .main input[type=checkbox] {
-  appearance: unset;
+  accent-color: var(--nycBlue);
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--nycBlue);
+  border-radius: 4px;
+}
+
+.main input[type=checkboxxx] {
+  /* appearance: unset; */
+  visibility: hidden;
   position: relative;
   margin-right: 5px;
   cursor: pointer;
@@ -86,16 +96,14 @@ span.sDown {
   border: 1px solid red;
 }
 
-
-
-.main input[type=checkbox]:not(:checked) {
+.main input[type=checkboxxx]:not(:checked) {
   top: 7px;
 }
-.main input[type=checkbox]:checked {
+.main input[type=checkboxxx]:checked {
   top: -1px;
   background-color: var(--nycBlue);
 }
-.main input[type=checkbox]:checked::after {
+.main input[type=checkboxxx]:checked::after {
   content: '✔';
   font-size: 75%;
   color: var(--nycWhite);
@@ -105,6 +113,9 @@ span.sDown {
   height: 20px;
   border-radius: 7px;
 }
+
+
+
 
 .main input[type=radio] {
   width: 21px;
