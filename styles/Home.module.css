@@ -97,6 +97,7 @@ span.sDown {
 }
 .main input[type=checkbox]:checked::after {
   content: '✔';
+  font-size: 75%;
   color: var(--nycWhite);
   background-color: var(--nycBlue);
   padding-left: 3px;
