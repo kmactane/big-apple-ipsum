@@ -68,7 +68,6 @@ span.sDown {
 .main input[type=checkbox] {
   appearance: unset;
   position: relative;
-  top: 7px;
   margin-right: 5px;
   cursor: pointer;
   width: 20px;
@@ -76,16 +75,31 @@ span.sDown {
   border: 1px solid var(--nycBlue);
   border-radius: 4px;
 }
+.NOTmain input[type=checkbox]::after {
+  content: '';
+  display: inline-block;
+  color: var(--nycWhite);
+  background-color: var(--pageBg);
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid red;
+}
+
+
+
+.main input[type=checkbox]:not(:checked) {
+  top: 7px;
+}
 .main input[type=checkbox]:checked {
+  top: -1px;
   background-color: var(--nycBlue);
 }
-.main input[type=checkbox]:checked::before {
+.main input[type=checkbox]:checked::after {
   content: '✔';
   color: var(--nycWhite);
   background-color: var(--nycBlue);
   padding-left: 3px;
-  position: absolute;
-  top: -1px;
   width: 13px;
   height: 20px;
   border-radius: 7px;
@@ -95,7 +109,6 @@ span.sDown {
   width: 21px;
   height: 21px;
   border-radius: 50%;
-  /* vertical-align: -50%; */
 }
 .main input[type=radio]:not(:checked) {
   appearance: unset;
